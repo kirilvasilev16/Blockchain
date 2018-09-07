@@ -17,6 +17,8 @@ contract DDNS {
         require(buyer[domain].isSold == false);
         require(msg.value == 1 ether && msg.sender.balance >= 1);
         buyer[domain] = OrderStruct(0, domain, msg.sender, true);
+        uint money = 1;
+        msg.sender.transfer(money);
     }
     
     function setIP(string domain, uint ip) public {
